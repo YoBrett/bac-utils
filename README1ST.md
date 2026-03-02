@@ -23,15 +23,15 @@
 First, verify that the downloaded `.tar.gz.gpg` file matches the provided checksum.
 
 ```bash
-sha256sum -c bac-utils-1.0.0.tar.gz.gpg.sha256
+sha256sum -c __BUILD_FILENAME__.tar.gz.gpg.sha256
 ```
-(You should see `bac-utils-1.0.0.tar.gz.gpg: OK`)
+(You should see `__BUILD_FILENAME__.tar.gz.gpg: OK`)
 
 ## 2. Decrypt the Archive
 Decrypt the file using GPG. You will be prompted for the password provided securely.
 
 ```bash
-gpg -d -o bac-utils-1.0.0.tar.gz bac-utils-1.0.0.tar.gz.gpg
+gpg -d -o __BUILD_FILENAME__.tar.gz __BUILD_FILENAME__.tar.gz.gpg
 ```
 (Enter the password when prompted.)
 
@@ -39,7 +39,7 @@ gpg -d -o bac-utils-1.0.0.tar.gz bac-utils-1.0.0.tar.gz.gpg
 Extract the contents and run the installation script.
 
 ```bash
-tar -xzf bac-utils-1.0.0.tar.gz
+tar -xzf __BUILD_FILENAME__.tar.gz
 sudo ./bac-utils.sh
 ```
 

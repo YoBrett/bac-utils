@@ -22,7 +22,7 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 LOG_DIR="$SCRIPT_DIR/log"
 LOG_FILE="$LOG_DIR/bac-utils.log"
-TOOLS=("net-tools" "tmux" "git" "htop" "btop" "stress-ng" "screenfetch" "lm-sensors" "coreutils")
+TOOLS=("net-tools" "tmux" "git" "htop" "btop" "stress-ng" "screenfetch" "lm-sensors" "coreutils" "gnupg")
 
 # Detect real user (for log file ownership)
 REAL_USER="${SUDO_USER:-$USER}"
