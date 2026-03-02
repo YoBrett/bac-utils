@@ -22,7 +22,7 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 LOG_DIR="$SCRIPT_DIR/log"
 LOG_FILE="$LOG_DIR/bac-utils.log"
-TOOLS=("net-tools" "tmux" "git" "htop" "btop" "stress-ng" "screenfetch" "lm-sensors" "coreutils" "bandwhich")
+TOOLS=("net-tools" "tmux" "git" "htop" "btop" "stress-ng" "screenfetch" "lm-sensors" "coreutils")
 
 # Detect real user (for log file ownership)
 REAL_USER="${SUDO_USER:-$USER}"
@@ -126,6 +126,18 @@ for tool in "${TOOLS[@]}"; do
         handle_error "Failed to install: $tool. Check log for details."
     fi
 done
+
+# Install bandwhich via snap
+log "Attempting to install: bandwhich (via snap)"
+if command -v bandwhich >/dev/null 2>&1 || snap list bandwhich >/dev/null 2>&1; then
+    log "${YELLOW}bandwhich is already installed. Skipping.${NC}"
+else
+    if sudo snap install bandwhich >> "$LOG_FILE" 2>&1; then
+        log "${GREEN}Successfully installed: bandwhich${NC}"
+    else
+        handle_error "Failed to install: bandwhich via snap. Check log for details."
+    fi
+fi
 
 log "----------------------------------------"
 log "Installation process complete."
